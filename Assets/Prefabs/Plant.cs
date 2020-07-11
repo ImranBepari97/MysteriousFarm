@@ -12,13 +12,22 @@ public class Plant : Interactable
     public float sproutingGrowth = 1.0f;
     public float adultGrowth = 2.0f;
     public float rottenGrowth = 3.0f;
+    public int baseValue = 20;
     public enum Growth_Stage {SEEDLING, SPROUTING, ADULT, ROTTEN};
     public Growth_Stage Stage = Growth_Stage.ADULT;
     public Mesh Sprout,Adult,Rotten;
 
     public override void OnInteract(GameObject objPlayer)
     {
-
+        if (Stage == Growth_Stage.ADULT)
+        {
+            GameManager.score += baseValue;
+            Destroy(this.gameObject);
+        }
+        else if (Stage == Growth_Stage.ADULT)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public void checkState()
