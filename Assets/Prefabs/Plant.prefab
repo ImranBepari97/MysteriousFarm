@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 403197201365598859}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.91, y: 0.61, z: 12.07}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,7 +93,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403197201365598859}
-  m_Mesh: {fileID: -2432090755550338912, guid: 78c15e99ea19f5948943f85e6b563af8, type: 3}
+  m_Mesh: {fileID: -6099484096325740511, guid: a8e933029cd713a468322184cef832cb, type: 3}
 --- !u!114 &5533794405173366422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,7 +113,8 @@ MonoBehaviour:
   sproutingGrowth: 1
   adultGrowth: 2
   rottenGrowth: 3
+  baseValue: 20
   Stage: 0
   Sprout: {fileID: -3498743261076031800, guid: 041fd1f0101f578408fc12c894813a70, type: 3}
-  Seeding: {fileID: 0}
-  Rotten: {fileID: 0}
+  Adult: {fileID: -2432090755550338912, guid: 78c15e99ea19f5948943f85e6b563af8, type: 3}
+  Rotten: {fileID: -2432090755550338912, guid: 61be5150f048cd54e9d6ad5b666df6bc, type: 3}

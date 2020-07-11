@@ -19,6 +19,12 @@ public class Plant : Interactable
 
     public override void OnInteract(GameObject objPlayer)
     {
+
+        //Stall player for X time while doing action
+        //Run an action animation
+
+        objPlayer.GetComponent<Player>().stallPlayer(3);
+
         if (Stage == Growth_Stage.ADULT)
         {
             GameManager.score += baseValue;
