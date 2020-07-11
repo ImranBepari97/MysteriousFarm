@@ -9,7 +9,7 @@ public class Silo : Interactable
     public void sellPlant(Player player) {
         
         player.hasPlant = false;
-        player.plantScore += 100;
+        GameManager.score += player.plantScore;
     }
 
     public override void OnInteract(GameObject objPlayer)

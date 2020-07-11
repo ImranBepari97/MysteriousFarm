@@ -29,6 +29,7 @@ public class Plant : Interactable
         {
             pl1.plantScore += baseValue;
             pl1.hasPlant = true;
+            pl1.OnTriggerExit(this.GetComponent<Collider>());
             Destroy(this.gameObject);
         }
         else if (Stage == Growth_Stage.ADULT)

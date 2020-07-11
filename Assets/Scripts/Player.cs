@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
     }
 
 
-    void OnTriggerExit(Collider coll) {
+    public void OnTriggerExit(Collider coll) {
         if(coll.gameObject.GetComponent<Interactable>()) {
             interactables.Remove(coll.gameObject.GetComponent<Interactable>());
         }
