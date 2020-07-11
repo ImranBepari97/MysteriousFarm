@@ -13,8 +13,8 @@ public class Plant : Interactable
     public float adultGrowth = 2.0f;
     public float rottenGrowth = 3.0f;
     public enum Growth_Stage {SEEDLING, SPROUTING, ADULT, ROTTEN};
-    public Growth_Stage Stage = Growth_Stage.SEEDLING;
-    public 
+    public Growth_Stage Stage = Growth_Stage.ADULT;
+    public Mesh Sprout,Adult,Rotten;
 
     public override void OnInteract(GameObject objPlayer)
     {
@@ -23,15 +23,15 @@ public class Plant : Interactable
 
     public void checkState()
     {
-        if(growthValue > sproutingGrowth && Stage != Growth_Stage.SPROUTING)
+        if(growthValue > sproutingGrowth && Stage == Growth_Stage.SEEDLING)
         {
             becomeSprouting();
         }
-        else if (growthValue > adultGrowth && Stage != Growth_Stage.ADULT)
+        else if (growthValue > adultGrowth && Stage == Growth_Stage.SPROUTING)
         {
             becomeAdult();
         }
-        else if (growthValue > adultGrowth && Stage != Growth_Stage.ROTTEN)
+        else if (growthValue > rottenGrowth && Stage == Growth_Stage.ADULT)
         {
             becomeRotten();
         }
@@ -39,17 +39,18 @@ public class Plant : Interactable
 
     public void becomeSprouting()
     {
-        GetComponent<MeshFilter).mesh = anotherMesh;
+        Stage = Growth_Stage.SPROUTING;
+        GetComponent<MeshFilter>().mesh = Sprout;
     }
-
     public void becomeAdult()
     {
-        GetComponent(MeshFilter).mesh = anotherMesh;
+        Stage = Growth_Stage.ADULT;
+        GetComponent<MeshFilter>().mesh = Adult;
     }
-
     public void becomeRotten()
     {
-        GetComponent(MeshFilter).mesh = anotherMesh;
+        Stage = Growth_Stage.ROTTEN;
+        GetComponent<MeshFilter>().mesh = Rotten;
     }
     // Start is called before the first frame update
     void Start()
@@ -67,5 +68,6 @@ public class Plant : Interactable
             growthValue += 0.1f;
         }
         lastTimeSeconds = (int)(TimeManager.time % 60);
+        checkState();
     }
 }
