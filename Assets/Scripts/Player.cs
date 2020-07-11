@@ -8,7 +8,13 @@ public class Player : MonoBehaviour
     Rigidbody rb;
 	public float movementSpeed;
     public bool whiteKey = false;
-
+    public bool stalled = false;
+    public int stallTimerSeconds = 0;
+    public int currentTimeSeconds = 0;
+    public int lastTimeSeconds = 0;
+    public bool hasPlant = false;
+    public int plantScore = 0;
+    public bool canEquiped = false;
 
     List<Interactable> interactables;
 
@@ -25,30 +31,70 @@ public class Player : MonoBehaviour
 
     }
 
+    public void stallPlayer(int stallSec)
+    {
+        stalled = true;
+        stallTimerSeconds = stallSec;
+    }
+
     void Update()
     {
-
-        rb.velocity = new Vector3(movementSpeed * Input.GetAxis("Horizontal"), rb.velocity.y, movementSpeed * Input.GetAxis("Vertical"));
-		 
-		if (rb.velocity.magnitude != 0)
+        if(stalled == false)
         {
-            rb.rotation = Quaternion.LookRotation(rb.velocity);
-        }
+            rb.velocity = new Vector3(movementSpeed * Input.GetAxis("Horizontal"), rb.velocity.y, movementSpeed * Input.GetAxis("Vertical"));
 
-        //Interaction Call
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("Press E");
-            if(interactables.Count > 0) {
-                interactables[0].OnInteract(this.gameObject);
+            if (rb.velocity.magnitude != 0)
+            {
+                rb.rotation = Quaternion.LookRotation(rb.velocity);
             }
+
+            //Interaction Call
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Debug.Log("Press E");
+                if (interactables.Count > 0)
+                {
+                    interactables[0].OnInteract(this.gameObject);
+                }
+            }
+
+            //Equip Watering Can
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if(canEquiped == false)
+                {
+                    //Create child object watering can on player
+                    canEquiped = true;
+                }
+                else
+                {
+                    //Remove can object
+                    canEquiped = false;
+                }
                 
+            }
             
+
         }
+        else
+        {
+            //If a second has passed
+            currentTimeSeconds = (int)(TimeManager.time % 60);
+            if (currentTimeSeconds > lastTimeSeconds)
+            {
+                stallTimerSeconds -= 1;
+                if(stallTimerSeconds < 0)
+                {
+                    stalled = false;
+                }
+            }
+            lastTimeSeconds = (int)(TimeManager.time % 60);
+        }
+
     }
 
 
-    void OnTriggerExit(Collider coll) {
+    public void OnTriggerExit(Collider coll) {
         if(coll.gameObject.GetComponent<Interactable>()) {
             interactables.Remove(coll.gameObject.GetComponent<Interactable>());
         }

@@ -21,13 +21,23 @@ public class Plant : Interactable
 
     public override void OnInteract(GameObject objPlayer)
     {
+
+        //Stall player for X time while doing action
+        //Run an action animation
+        Player pl1 = objPlayer.GetComponent<Player>();
+        pl1.stallPlayer(3);
+
         if (Stage == Growth_Stage.ADULT)
         {
-            GameManager.score += baseValue;
+            pl1.plantScore += baseValue;
+            pl1.hasPlant = true;
+            pl1.OnTriggerExit(this.GetComponent<Collider>());
             Destroy(this.gameObject);
         }
         else if (Stage == Growth_Stage.ADULT)
         {
+            pl1.plantScore -= baseValue;
+            pl1.hasPlant = true;
             Destroy(this.gameObject);
         }
     }

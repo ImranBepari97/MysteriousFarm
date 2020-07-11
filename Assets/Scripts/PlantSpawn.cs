@@ -29,15 +29,14 @@ public class PlantSpawn : MonoBehaviour
 
     IEnumerator SpawnPlant()
     {
-        while(!GameManager.isGameOver) {
+        while(!GameManager.isGameOver && currentVegetable == null) {
             yield return new WaitForSeconds(1f);
             float spawn = Random.Range(0, 1f);
-            if(spawn < spawnChance && currentVegetable == null) {
+            if(spawn < spawnChance) {
                 Debug.Log("Spawn rng: " + spawn);
                 currentVegetable = Instantiate(possiblePlants[Random.Range(0, possiblePlants.Count-1)], gameObject.transform.position, Quaternion.identity);
                 currentVegetable.spawner = this;
                 spawnChance += 0.01f;
-                return;
             }
         }
     }
