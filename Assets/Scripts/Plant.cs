@@ -17,6 +17,8 @@ public class Plant : Interactable
     public Growth_Stage Stage = Growth_Stage.ADULT;
     public Mesh Sprout,Adult,Rotten;
 
+    public PlantSpawn spawner;
+
     public override void OnInteract(GameObject objPlayer)
     {
         if (Stage == Growth_Stage.ADULT)
