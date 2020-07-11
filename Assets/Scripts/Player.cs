@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public int lastTimeSeconds = 0;
     public bool hasPlant = false;
     public int plantScore = 0;
+    public bool canEquiped = false;
 
     List<Interactable> interactables;
 
@@ -55,9 +56,25 @@ public class Player : MonoBehaviour
                 {
                     interactables[0].OnInteract(this.gameObject);
                 }
-
-
             }
+
+            //Equip Watering Can
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                if(canEquiped == false)
+                {
+                    //Create child object watering can on player
+                    canEquiped = true;
+                }
+                else
+                {
+                    //Remove can object
+                    canEquiped = false;
+                }
+                
+            }
+            
+
         }
         else
         {
