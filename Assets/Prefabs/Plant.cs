@@ -22,16 +22,19 @@ public class Plant : Interactable
 
         //Stall player for X time while doing action
         //Run an action animation
-
-        objPlayer.GetComponent<Player>().stallPlayer(3);
+        Player pl1 = objPlayer.GetComponent<Player>();
+        pl1.stallPlayer(3);
 
         if (Stage == Growth_Stage.ADULT)
         {
-            GameManager.score += baseValue;
+            pl1.plantScore += baseValue;
+            pl1.hasPlant = true;
             Destroy(this.gameObject);
         }
         else if (Stage == Growth_Stage.ADULT)
         {
+            pl1.plantScore -= baseValue;
+            pl1.hasPlant = true;
             Destroy(this.gameObject);
         }
     }

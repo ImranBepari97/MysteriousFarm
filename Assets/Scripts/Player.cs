@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public int stallTimerSeconds = 0;
     public int currentTimeSeconds = 0;
     public int lastTimeSeconds = 0;
+    public bool hasPlant = false;
+    public int plantScore = 0;
 
     List<Interactable> interactables;
 
