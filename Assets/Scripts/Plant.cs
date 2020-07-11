@@ -13,11 +13,11 @@ public class Plant : Interactable
     public float adultGrowth = 2.0f;
     public float rottenGrowth = 3.0f;
     public int baseValue = 20;
-    public enum Growth_Stage {SEEDLING, SPROUTING, ADULT, ROTTEN};
+    public enum Growth_Stage { SEEDLING, SPROUTING, ADULT, ROTTEN };
     public Growth_Stage Stage = Growth_Stage.ADULT;
-    public Mesh Sprout,Adult,Rotten;
+    public Mesh Sprout, Adult, Rotten;
 
-    public PlantSpawn spawner;
+    public PlantSpawn spawner = null;
 
     public override void OnInteract(GameObject objPlayer)
     {
@@ -32,19 +32,27 @@ public class Plant : Interactable
             pl1.plantScore += baseValue;
             pl1.hasPlant = true;
             pl1.OnTriggerExit(this.GetComponent<Collider>());
+            if (spawner != null)
+            {
+                spawner.TrySpawningNewPlant();
+            }
             Destroy(this.gameObject);
         }
         else if (Stage == Growth_Stage.ADULT)
         {
             pl1.plantScore -= baseValue;
             pl1.hasPlant = true;
+            if (spawner != null)
+            {
+                spawner.TrySpawningNewPlant();
+            }
             Destroy(this.gameObject);
         }
     }
 
     public void checkState()
     {
-        if(growthValue > sproutingGrowth && Stage == Growth_Stage.SEEDLING)
+        if (growthValue > sproutingGrowth && Stage == Growth_Stage.SEEDLING)
         {
             becomeSprouting();
         }
@@ -84,7 +92,7 @@ public class Plant : Interactable
     {
         //If a second has passed
         currentTimeSeconds = (int)(TimeManager.time % 60);
-        if(currentTimeSeconds > lastTimeSeconds)
+        if (currentTimeSeconds > lastTimeSeconds)
         {
             growthValue += 0.1f;
         }
