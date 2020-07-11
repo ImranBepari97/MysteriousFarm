@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class bin : MonoBehaviour
+public class bin : Interactable
 {
-    public void dumpPlant() {
-        pComp.hasPlant = false
+    public void dumpPlant(Player player) {
+        player.hasPlant = false
     }
-    
+
     public override void OnInteract(GameObject objPlayer)
     {
         Player pComp = objPlayer.GetComponent<Player>();
         if(pComp.hasPlant == true) {
-            dumpPlant();
+            dumpPlant(pComp);
         } else {
             Debug.Log("You need crops to dump");
         }
