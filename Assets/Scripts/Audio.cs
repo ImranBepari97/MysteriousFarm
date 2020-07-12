@@ -15,6 +15,8 @@ public class Audio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        song.pitch += 0.00001f;
+        if(song.pitch < 1.3f) {
+            song.pitch += 0.00001f;
+        }
     }
 }

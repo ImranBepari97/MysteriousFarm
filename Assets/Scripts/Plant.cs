@@ -34,6 +34,7 @@ public class Plant : Interactable
             {
                 pl1.plantScore = baseValue;
                 pl1.hasPlant = true;
+                pl1.whatPlantHolding = 1;
                 pl1.OnTriggerExit(this.GetComponent<Collider>());
                 if (spawner != null)
                 {
@@ -45,6 +46,7 @@ public class Plant : Interactable
             {
                 pl1.plantScore = -1*baseValue;
                 pl1.hasPlant = true;
+                pl1.whatPlantHolding = 2;
                 pl1.OnTriggerExit(this.GetComponent<Collider>());
                 if (spawner != null)
                 {
