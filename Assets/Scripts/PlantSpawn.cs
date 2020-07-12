@@ -36,7 +36,7 @@ public class PlantSpawn : MonoBehaviour
                 Debug.Log("Spawn rng: " + spawn);
                 currentVegetable = Instantiate(possiblePlants[Random.Range(0, possiblePlants.Count-1)], gameObject.transform.position, Quaternion.identity);
                 currentVegetable.spawner = this;
-                spawnChance += 0.01f;
+                spawnChance += 0.005f;
             }
         }
     }

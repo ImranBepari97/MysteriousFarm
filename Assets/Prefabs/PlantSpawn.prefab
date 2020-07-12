@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87e8d958e4798bd4b9f4bb85a008da64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnChance: 0.05
+  spawnChance: 0.01
   currentVegetable: {fileID: 0}
   possiblePlants:
   - {fileID: 5533794405173366422, guid: 4033a39bfce206c4081882f9ee43da1c, type: 3}

@@ -28,7 +28,7 @@ public class Plant : Interactable
         Player pl1 = objPlayer.GetComponent<Player>();
         if(pl1.hasPlant == false)
         {
-            pl1.stallPlayer(3);
+            pl1.stallPlayer(1);
 
             if (Stage == Growth_Stage.ADULT)
             {

@@ -18,6 +18,7 @@ public class Cow : Interactable
     public void milk() {
         isMilkable = false;
         isMilkedToday = true;
+        GameManager.score += 69;
     }
 
     public void updateMilkStatus() {
