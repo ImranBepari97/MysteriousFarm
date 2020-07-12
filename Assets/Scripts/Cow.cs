@@ -12,6 +12,7 @@ public class Cow : Interactable
     {
         isMilkedToday = false;
         isMilkable = true;
+        GetComponent<AudioSource>().enabled = false;
     }
 
     public void milk() {
@@ -27,8 +28,10 @@ public class Cow : Interactable
         if(isMilkable == true) {
             milk();
             Debug.Log("You got some milk!");
+            GetComponent<AudioSource>().enabled = true;
         } else {
             Debug.Log("Come back tommorow for more milk!");
+            GetComponent<AudioSource>().enabled = false;
         }
     }
     // Update is called once per frame

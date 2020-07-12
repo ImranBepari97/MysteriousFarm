@@ -18,6 +18,7 @@ public class Silo : Interactable
         if(pComp.hasPlant == true) {
             sellPlant(pComp);
             Debug.Log("You sold some crops!");
+            GetComponent<AudioSource>().Play();
         } else {
             Debug.Log("You need crops");
         }
