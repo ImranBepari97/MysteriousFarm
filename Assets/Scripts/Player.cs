@@ -21,7 +21,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();  
-        interactables = new List<Interactable>(); 
+        interactables = new List<Interactable>();
+        GetComponent<Animation>().enabled = false;
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
 
     public void stallPlayer(int stallSec)
     {
+        GetComponent<Animation>().enabled = true;
         stalled = true;
         stallTimerSeconds = stallSec;
     }
@@ -86,6 +88,7 @@ public class Player : MonoBehaviour
                 if(stallTimerSeconds < 0)
                 {
                     stalled = false;
+                    GetComponent<Animation>().enabled = false;
                 }
             }
             lastTimeSeconds = (int)(TimeManager.time % 60);
