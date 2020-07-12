@@ -127,7 +127,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!114 &659243242879925254
 MonoBehaviour:
@@ -143,6 +143,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   whiteKey: 0
+  stalled: 0
+  stallTimerSeconds: 0
+  currentTimeSeconds: 0
+  lastTimeSeconds: 0
+  hasPlant: 0
+  plantScore: 0
+  canEquiped: 0
 --- !u!65 &3469567112416615287
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -154,8 +161,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 1.13}
+  m_Size: {x: 1, y: 1.7152014, z: 1}
+  m_Center: {x: 0, y: -0.3576007, z: 1.13}
 --- !u!1 &7586797657654376906
 GameObject:
   m_ObjectHideFlags: 0
