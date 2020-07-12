@@ -16,6 +16,7 @@ public class Plant : Interactable
     public enum Growth_Stage { SEEDLING, SPROUTING, ADULT, ROTTEN };
     public Growth_Stage Stage = Growth_Stage.ADULT;
     public Mesh Sprout, Adult, Rotten;
+    public Material matSprout, matAdult, matRotten;
 
     public PlantSpawn spawner = null;
 
@@ -31,7 +32,7 @@ public class Plant : Interactable
 
             if (Stage == Growth_Stage.ADULT)
             {
-                pl1.plantScore += baseValue;
+                pl1.plantScore = baseValue;
                 pl1.hasPlant = true;
                 pl1.OnTriggerExit(this.GetComponent<Collider>());
                 if (spawner != null)
@@ -40,10 +41,11 @@ public class Plant : Interactable
                 }
                 Destroy(this.gameObject);
             }
-            else if (Stage == Growth_Stage.ADULT)
+            else if (Stage == Growth_Stage.ROTTEN)
             {
-                pl1.plantScore -= baseValue;
+                pl1.plantScore = -1*baseValue;
                 pl1.hasPlant = true;
+                pl1.OnTriggerExit(this.GetComponent<Collider>());
                 if (spawner != null)
                 {
                     spawner.TrySpawningNewPlant();
@@ -73,16 +75,31 @@ public class Plant : Interactable
     {
         Stage = Growth_Stage.SPROUTING;
         GetComponent<MeshFilter>().mesh = Sprout;
+        Renderer rend = GetComponent<Renderer>();
+        if (rend != null)
+        {
+            rend.material = matSprout;
+        }
     }
     public void becomeAdult()
     {
         Stage = Growth_Stage.ADULT;
         GetComponent<MeshFilter>().mesh = Adult;
+        Renderer rend = GetComponent<Renderer>();
+        if (rend != null)
+        {
+            rend.material = matAdult;
+        }
     }
     public void becomeRotten()
     {
         Stage = Growth_Stage.ROTTEN;
         GetComponent<MeshFilter>().mesh = Rotten;
+        Renderer rend = GetComponent<Renderer>();
+        if (rend != null)
+        {
+            rend.material = matRotten;
+        }
     }
     // Start is called before the first frame update
     void Start()

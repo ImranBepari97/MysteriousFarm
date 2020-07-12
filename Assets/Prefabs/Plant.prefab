@@ -93,7 +93,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403197201365598859}
-  m_Mesh: {fileID: -6099484096325740511, guid: a8e933029cd713a468322184cef832cb, type: 3}
+  m_Mesh: {fileID: -2432090755550338912, guid: 06ad77902a174504eb4f8c1ad7474002, type: 3}
 --- !u!114 &5533794405173366422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +115,13 @@ MonoBehaviour:
   rottenGrowth: 3
   baseValue: 20
   Stage: 0
-  Sprout: {fileID: -3498743261076031800, guid: 041fd1f0101f578408fc12c894813a70, type: 3}
+  Sprout: {fileID: -1631561237609387615, guid: 79622234cd70d134dad37bd6b3a95464, type: 3}
   Adult: {fileID: -2432090755550338912, guid: 78c15e99ea19f5948943f85e6b563af8, type: 3}
   Rotten: {fileID: -2432090755550338912, guid: 61be5150f048cd54e9d6ad5b666df6bc, type: 3}
+  matSprout: {fileID: 8529481535521766085, guid: 79622234cd70d134dad37bd6b3a95464,
+    type: 3}
+  matAdult: {fileID: 1411009148027576344, guid: 78c15e99ea19f5948943f85e6b563af8,
+    type: 3}
+  matRotten: {fileID: 7741625113677808684, guid: 61be5150f048cd54e9d6ad5b666df6bc,
+    type: 3}
+  spawner: {fileID: 0}
