@@ -7,6 +7,7 @@ public class Garbage : Interactable
     public void DumpPlant(Player player)
     {
         player.hasPlant = false;
+        player.whatPlantHolding = 0;
     }
 
     public override void OnInteract(GameObject objPlayer)
