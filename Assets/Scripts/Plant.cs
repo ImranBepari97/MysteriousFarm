@@ -25,28 +25,31 @@ public class Plant : Interactable
         //Stall player for X time while doing action
         //Run an action animation
         Player pl1 = objPlayer.GetComponent<Player>();
-        pl1.stallPlayer(3);
+        if(pl1.hasPlant == false)
+        {
+            pl1.stallPlayer(3);
 
-        if (Stage == Growth_Stage.ADULT)
-        {
-            pl1.plantScore += baseValue;
-            pl1.hasPlant = true;
-            pl1.OnTriggerExit(this.GetComponent<Collider>());
-            if (spawner != null)
+            if (Stage == Growth_Stage.ADULT)
             {
-                spawner.TrySpawningNewPlant();
+                pl1.plantScore += baseValue;
+                pl1.hasPlant = true;
+                pl1.OnTriggerExit(this.GetComponent<Collider>());
+                if (spawner != null)
+                {
+                    spawner.TrySpawningNewPlant();
+                }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
-        }
-        else if (Stage == Growth_Stage.ADULT)
-        {
-            pl1.plantScore -= baseValue;
-            pl1.hasPlant = true;
-            if (spawner != null)
+            else if (Stage == Growth_Stage.ADULT)
             {
-                spawner.TrySpawningNewPlant();
+                pl1.plantScore -= baseValue;
+                pl1.hasPlant = true;
+                if (spawner != null)
+                {
+                    spawner.TrySpawningNewPlant();
+                }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
         }
     }
 
