@@ -9,6 +9,7 @@ public class Silo : Interactable
     public void sellPlant(Player player) {
         
         player.hasPlant = false;
+        player.whatPlantHolding = 0;
         GameManager.score += player.plantScore;
     }
 

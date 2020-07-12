@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -16,10 +17,16 @@ public class Player : MonoBehaviour
     public int plantScore = 0;
     public bool canEquiped = false;
 
+    public int whatPlantHolding; // 0 empty, 1 adult, 2 rotten
+    public TMP_Text plantHoldingText;
+    
+    
+
     List<Interactable> interactables;
 
     void Start()
     {
+        whatPlantHolding = 0;
         rb = GetComponent<Rigidbody>();  
         interactables = new List<Interactable>();
         GetComponent<Animation>().enabled = false;
@@ -79,6 +86,18 @@ public class Player : MonoBehaviour
                     canEquiped = false;
                 }
                 
+            }
+
+            switch(whatPlantHolding) {
+                case 0:
+                    plantHoldingText.text = "";
+                    break;
+                case 1:
+                    plantHoldingText.text = "Currently holding: Grown Plant";
+                    break;
+                case 2:
+                    plantHoldingText.text = "Currently holding: Rotten Plant";
+                    break;
             }
             
 
