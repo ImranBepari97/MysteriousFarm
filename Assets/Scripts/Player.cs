@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();  
         interactables = new List<Interactable>();
         GetComponent<Animation>().enabled = false;
+        GetComponent<AudioSource>().enabled = false;
     }
 
     // Update is called once per frame
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     public void stallPlayer(int stallSec)
     {
         GetComponent<Animation>().enabled = true;
+        GetComponent<AudioSource>().enabled = true;
         stalled = true;
         stallTimerSeconds = stallSec;
         //Kill player momentum
@@ -92,6 +94,7 @@ public class Player : MonoBehaviour
                 {
                     stalled = false;
                     GetComponent<Animation>().enabled = false;
+                    GetComponent<AudioSource>().enabled = false;
                 }
             }
             lastTimeSeconds = (int)(TimeManager.time % 60);
