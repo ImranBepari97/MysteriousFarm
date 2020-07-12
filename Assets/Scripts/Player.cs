@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(stalled == false)
+        if(stalled == false && !GameManager.isGameOver)
         {
             rb.velocity = new Vector3(movementSpeed * Input.GetAxis("Horizontal"), rb.velocity.y, movementSpeed * Input.GetAxis("Vertical"));
 
