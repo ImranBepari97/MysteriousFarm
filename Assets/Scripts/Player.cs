@@ -37,6 +37,9 @@ public class Player : MonoBehaviour
         GetComponent<Animation>().enabled = true;
         stalled = true;
         stallTimerSeconds = stallSec;
+        //Kill player momentum
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     void Update()
